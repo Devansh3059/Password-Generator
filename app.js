@@ -20,6 +20,25 @@ window.onload = function() {
     // console.log(generatePassword())
   });
 
+
+  //copying to clipboard
+  clipboardEL.addEventListener("click",function(){
+      const textarea = document.createElement("textarea");          //created a dom elemennt to store password
+      const password = resultEL.innerText;
+       if(!password){
+           return;
+       }
+       else{
+           textarea.value = password;
+            document.body.appendChild(textarea);                    //appendChild puts the dom element in the body
+            textarea.select();
+            document.execCommand("copy");
+            textarea.remove();
+            alert("Password copied to clipboard");
+       }
+  })
+
+
   function generatePassword(lower, upper, number, symbol,length) {
     var generatedPassword = "";
     const typesCount = lower + upper + number + symbol;
